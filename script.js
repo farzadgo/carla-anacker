@@ -12,11 +12,13 @@ const links = document.querySelectorAll('.link');
 const sections = document.querySelectorAll('.section');
 
 async function catchNext(elm, index, id) {
-  // console.log(index);
-  console.log(elm.parentElement);
   elm.src = " ";
   const response = await fetch(`${id}/image_${index}.jpg`);
-  elm.src = response.url;  
+  const blob = await response.blob();
+  elm.src = URL.createObjectURL(blob);
+  elm.onload = (event) => {
+    console.log(event.target);
+  }
 }
 
 const nexter = (event) => {
@@ -96,14 +98,6 @@ const observer = new IntersectionObserver(entries => {
 sections.forEach(target => {
   observer.observe(target);
 });
-
-// window.addEventListener('DOMContentLoaded', () => {
-//   // here was observer and its targets
-// });
-
-
-
-
 
 thumbs.forEach(e => {
   const animOne = e.firstElementChild.firstElementChild.firstElementChild.firstElementChild;
