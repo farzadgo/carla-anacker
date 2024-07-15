@@ -10,6 +10,6 @@
   "license": "ISC",
   "home": "https://farzadgo.github.io/carla-ancker",
   "dependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^5.0.0"
   }
 }
